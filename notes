@@ -1,0 +1,4 @@
+#Week 2 make file instructions
+
+#Run make file by - make newfilename.txt
+eg make draft_journal_entry.txt
