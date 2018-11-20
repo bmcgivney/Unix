@@ -1,26 +1,24 @@
 
-#!/bin/bash
-
-# ls -1 | wc -l
-
-result=$(eval ls -1 | wc -l)
-echo $result
-
-
-shouldloop=true;
-while $shouldloop; do
-read -p "Guess how many Files then press Enter:  " delconf
-shouldloop=true;
-if ! [[ "$delconf" =~ ^[0-9]+$ ]]; then 
- echo "Positive integers only plese, try again: "
-elif [ $delconf -gt $result ]; then
- echo "Too high, ty again: "
-elif [ $delconf -lt $result ]; then
- echo "Too Low, try again: "
-
-else
-  echo "Great";
-shouldloop=false;
-fi
+function congrats {
+	echo "Congratulations"
+}
+flg=0
+while [[ $flg -eq 0 ]]
+do
+	echo "Give no. of files:"
+	read resp
+	echo "You entered : $resp"
+	numfiles=(*)
+	numfiles=${#numfiles[@]}
+	if [[ resp -eq numfiles ]]
+	then
+		congrats
+		flg=1
+	elif [[ resp -gt numfiles ]]
+	then
+		echo "too high"
+	else
+		echo "too low"
+	fi
+	echo " "
 done
-
